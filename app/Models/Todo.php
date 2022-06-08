@@ -13,6 +13,10 @@ class Todo extends Model
         "content"
     ];
 
+    protected $hidden=[
+        "id"
+    ];
+
  
 
     public static $rules=array(

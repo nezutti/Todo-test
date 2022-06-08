@@ -23,9 +23,11 @@ class TodoController extends Controller
   }
 
   public function update(Request $request){
-     $this->validate($request, Todo::$rules);
+     $this->validate($request, Todo::$rules); 
+     
      Todo::find($request->id);
      $form=$request->all();
+      unset($form['_token']);
      Todo::where("id",$request->id)->update($form);
 
       
@@ -35,9 +37,9 @@ class TodoController extends Controller
   }
 
   public function delete(Request $request){
-      $items=Todo::all();
+     
 
-      Todo::delete($items);
+      Todo::find($request->id)->delete();
       return redirect("/");
   }
 
