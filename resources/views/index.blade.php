@@ -1,3 +1,7 @@
+
+
+
+
 <style>
   *{
    
@@ -28,6 +32,14 @@
  
   .Todo-head{
       background-color:white;
+  }
+
+  ul{
+    background-color:white;
+  }
+
+  li{
+    background-color:white;
   }
 
   table{
@@ -127,7 +139,18 @@
   <div class="Todolist">
     <div class="Todo-head">
       <h1>Todo List</h1>
+      
+      @if(count($errors)>0)
+       <ul>
+        @foreach($errors->all() as $error)
+         <li>{{$error}}</li>
+        @endforeach
+       </ul>
+         
+      @endif
+      
       <form action="todo/create" class="form1" method="post">
+       
         @csrf
         <input type="text" class="text1"  name="content">
         <input type="submit"  class="btn1" name="add" value="追加">
