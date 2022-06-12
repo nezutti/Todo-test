@@ -1,9 +1,8 @@
 <style>
   *{
    
-    background-color:blue;
+    background-color:#010066;
     
-    outline: 1px solid red !important;
     
   }
 
@@ -58,6 +57,7 @@
 
   .form1{
     width:100%;
+    background-color:white;
   }
 
   .text1{
@@ -65,6 +65,8 @@
     height:40px;
     background-color:white;
    margin-left:3%;
+   border:1px solid grey;
+   border-radius:5px;
   }
 
   .btn1{
