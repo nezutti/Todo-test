@@ -126,6 +126,10 @@
    margin:0px 10px;
   }
 
+  .login{
+     background-color:white;
+  }
+
 
    
   
@@ -139,6 +143,11 @@
   <div class="Todolist">
     <div class="Todo-head">
       <h1>Todo List</h1>
+      @if(Auth::check())
+       <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
+      @endif
+      <a href="/logout">ログアウト</a>
+     
       
       @if(count($errors)>0)
        <ul>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use App\Http\Conteollers\Auth\AuthenticatedSessionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,23 @@ use App\Http\Controllers\TodoController;
 |
 */
 
+
+
+
 Route::get('/', [TodoController::class,"index"]);
 
 Route::post("/todo/create",[TodoController::class,"create"]);
 Route::post("/todo/update",[TodoController::class,"update"]);
 Route::post("/todo/delete",[TodoController::class,"delete"]);
+
+          
+ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->middleware(['auth'])->name('logout');
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

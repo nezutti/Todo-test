@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
+
 
 class TodoController extends Controller
 {
   public function index(){
+      $user=Auth::user();
       $items=Todo::all();
-      return view("index",["items"=>$items]);
+      $param=["items"=>$items,"user"=>$user];
+      
+      return view("index",$param);
 
   }
 
@@ -44,7 +49,5 @@ class TodoController extends Controller
       
       return redirect("/");
   }
-
- 
 
 }
