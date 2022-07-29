@@ -162,9 +162,9 @@
        
         @csrf
         <input type="text" class="text1"  name="content">
-        <select name="tagname">
+        <select name="tag_id">
           @foreach($items2 as $item2)
-          <option value="{{$item2->tagname}}">{{$item2->tagname}}</option>
+          <option value="{{$item2->id}}">{{$item2->tagname}}</option>
           @endforeach
         </select>
         <input type="submit"  class="btn1" name="add" value="追加">
@@ -190,6 +190,12 @@
           <input type="text"  class="text2" name="content"  value="{{$item->content}}">
        
         </td>
+        <td>
+          <select name="tag_id">
+            @foreach($items2 as $item2)
+            <option value="{{$item2->id}}">{{$item2->tagname}}</option>
+            @endforeach
+          </select>
         <td>
           <input type="submit" class="btn2" value="更新">
           <input type="hidden" name="id" value="{{$item->id}}">

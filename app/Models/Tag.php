@@ -13,4 +13,9 @@ class Tag extends Model
         "id"
     ];
 
+     public static $rules=array(
+       "content"=>"required"
+    );
+
+
 }
