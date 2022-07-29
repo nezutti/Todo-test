@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Todo;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -12,8 +13,9 @@ class TodoController extends Controller
 {
   public function index(){
       $user=Auth::user();
-      $items=Todo::all();
-      $param=["items"=>$items,"user"=>$user];
+      $items=Todo::with('tag')->get();
+      $items2=Tag::all();
+      $param=["items"=>$items,"user"=>$user,"items2"=>$items2];
       
       return view("index",$param);
 

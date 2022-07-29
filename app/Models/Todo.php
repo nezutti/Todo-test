@@ -9,11 +9,9 @@ class Todo extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        "content"
-    ];
+   
 
-    protected $hidden=[
+    protected $guarded=[
         "id"
     ];
 
@@ -22,6 +20,10 @@ class Todo extends Model
     public static $rules=array(
        "content"=>"required|string|max:20"
     );
+
+    public function tag(){
+          return $this->belongsTo('App\Models\Tag');
+    }
 
 
 }

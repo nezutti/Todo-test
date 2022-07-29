@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
-use App\Http\Conteollers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 /*
@@ -26,7 +26,7 @@ Route::post("/todo/update",[TodoController::class,"update"]);
 Route::post("/todo/delete",[TodoController::class,"delete"]);
 
           
- Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware(['auth'])->name('logout');
 
 

@@ -162,13 +162,20 @@
        
         @csrf
         <input type="text" class="text1"  name="content">
+        <select name="tagname">
+          @foreach($items2 as $item2)
+          <option value="{{$item2->tagname}}">{{$item2->tagname}}</option>
+          @endforeach
+        </select>
         <input type="submit"  class="btn1" name="add" value="追加">
+
       </form>
     </div>
     <table>
       <tr>
         <th>作成日</th>
         <th>タスク名</th>
+        <th>タグ</th>
         <th>更新</th>
         <th>削除</th>
       </tr>
