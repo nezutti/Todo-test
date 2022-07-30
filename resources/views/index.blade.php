@@ -147,6 +147,8 @@
        <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
       @endif
       <a href="/logout">ログアウト</a>
+      <a href="/todo/find">タスク検索</a>
+
      
       
       @if(count($errors)>0)
@@ -192,9 +194,15 @@
         </td>
         <td>
           <select name="tag_id">
+            <option value="{{$item2->id}}">{{$item->tag->tagname}}</option>
             @foreach($items2 as $item2)
+            
+          
+            
             <option value="{{$item2->id}}">{{$item2->tagname}}</option>
+            
             @endforeach
+            
           </select>
         <td>
           <input type="submit" class="btn2" value="更新">

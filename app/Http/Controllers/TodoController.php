@@ -23,7 +23,7 @@ class TodoController extends Controller
 
   public function create(Request $request){
       $this->validate($request,Todo::$rules);
-      $this->validate($request,Tag::$rules);
+      
       $form=$request->all();
       Todo::create($form);
       return redirect("/");
@@ -32,11 +32,13 @@ class TodoController extends Controller
 
   public function update(Request $request){
      $this->validate($request, Todo::$rules); 
+     $findtodo=Todo::find($request->id);
+     $findtodo->content=$request->content;
+     $findtodo->tag_id=$request->tag_id;
+     $findtodo->save();
      
-     Todo::find($request->id);
-     $form=$request->all();
-      unset($form['_token']);
-     Todo::where("id",$request->id)->update($form);
+      
+    
 
       return redirect("/");
    
@@ -51,6 +53,13 @@ class TodoController extends Controller
       $todo->delete();
       
       return redirect("/");
+  }
+
+
+  public function find(){
+    
+     $search=$request->content;
+     Todo::where('content','like',"%$search%")->get();
   }
 
 }
