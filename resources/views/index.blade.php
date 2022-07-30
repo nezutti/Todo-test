@@ -166,7 +166,7 @@
         <input type="text" class="text1"  name="content">
         <select name="tag_id">
           @foreach($items2 as $item2)
-          <option value="{{$item2->id}}">{{$item2->tagname}}</option>
+          <option value="{{$item2->id}}">{{$item2->tagName}}</option>
           @endforeach
         </select>
         <input type="submit"  class="btn1" name="add" value="追加">
@@ -194,12 +194,12 @@
         </td>
         <td>
           <select name="tag_id">
-            <option value="{{$item2->id}}">{{$item->tag->tagname}}</option>
+            <option value="{{$item2->id}}">{{$item->tag->tagName}}</option>
             @foreach($items2 as $item2)
             
           
             
-            <option value="{{$item2->id}}">{{$item2->tagname}}</option>
+            <option value="{{$item2->id}}">{{$item2->tagName}}</option>
             
             @endforeach
             
