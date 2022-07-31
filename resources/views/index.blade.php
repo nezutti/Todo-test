@@ -147,7 +147,7 @@
        <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
       @endif
       <a href="/logout">ログアウト</a>
-      <a href="/todo/find">タスク検索</a>
+      <a href="/todo/search">タスク検索</a>
 
      
       

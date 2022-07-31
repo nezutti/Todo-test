@@ -56,10 +56,18 @@ class TodoController extends Controller
   }
 
 
-  public function find(){
+  public function search(){
     
-     $search=$request->content;
-     Todo::where('content','like',"%$search%")->get();
+   $items2=Tag::all();
+   $item=["items2"=>$items2];
+   
+   return view("search",$item);
   }
+
+public function find(Request $request){
+    $search=$request->content;
+    $items=Todo::where('content','like',"%$search")->get();
+    redirect("/todo/find");
+}
 
 }
