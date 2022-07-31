@@ -165,6 +165,7 @@
         @csrf
         <input type="text" class="text1"  name="content">
         <select name="tag_id">
+          
           @foreach($items2 as $item2)
           <option value="{{$item2->id}}">{{$item2->tagName}}</option>
           @endforeach
@@ -194,12 +195,15 @@
         </td>
         <td>
           <select name="tag_id">
-            <option value="{{$item2->id}}">{{$item->tag->tagName}}</option>
+
+           
             @foreach($items2 as $item2)
+              @if($item2->tagName==$item->tag->tagName)
+              <option value="{{$item2->id}}" selected>{{$item->tag->tagName}}</option>
+              @else
+              <option value="{{$item2->id}}" >{{$item2->tagName}}</option>
+              @endif
             
-          
-            
-            <option value="{{$item2->id}}">{{$item2->tagName}}</option>
             
             @endforeach
             
