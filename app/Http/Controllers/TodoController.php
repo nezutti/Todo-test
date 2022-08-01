@@ -70,8 +70,15 @@ public function search(Request $request){
     $s_tag_id=$request->tag_id;
     $items2=Tag::all();
     
-   $items=Todo::where([['content','like',"%$s_content%"],['tag_id',$s_tag_id]])->orWhere([['tag_id',empty($s_tag_id)],['content','like',"%$s_content%"]])->orWhere([['content',empty($s_content)],['tag_id',$s_tag_id]])->get(); 
-    
+    if(!empty($s_content) && !empty($s_tag_id)){
+        $items=Todo::where('content','like',"%$s_content%")->where('tag_id',$s_tag_id)->get();
+    }
+    if(!empty($s_content) && empty($s_tag_id)){
+         $items=Todo::where('content','like',"%$s_content%")->get();
+    } 
+    if(empty($s_content) && !empty($s_tag_id)){
+        $items=Todo::where('tag_id',$s_tag_id)->get();
+    }
   
     
    
@@ -88,3 +95,5 @@ public function search(Request $request){
 
 
 //両方被ってる or　content被ってるけど、tag_idは空欄　or tag_idは被っていて、contenは空欄
+
+//正しい方法は、入力されているinputの種類によって,ifで処理条件を分けるだった
