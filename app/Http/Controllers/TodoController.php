@@ -66,18 +66,25 @@ class TodoController extends Controller
   }
 
 public function search(Request $request){
-    $s_content=$request->input('content');
-    $s_tag_id=$request->input('tag_id');
+    $s_content=$request->content;
+    $s_tag_id=$request->tag_id;
     $items2=Tag::all();
     
-    if(!empty($s_content)){
-       $items=Todo::where('content','like',"%$s_content%")->get();
-    }
-    if(!empty($s_tag_id)){
-        $items=Todo::where('tag_id',$s_tag_id)->get();
-    }
+   $items=Todo::where([['content','like',"%$s_content%"],['tag_id',$s_tag_id]])->orWhere([['tag_id',empty($s_tag_id)],['content','like',"%$s_content%"]])->orWhere([['content',empty($s_content)],['tag_id',$s_tag_id]])->get(); 
+    
+  
+    
+   
     $param=["items"=>$items,"items2"=>$items2];
     return view("search",$param);
+
+
 }
 
 }
+//1 content、tag_idそれぞれ分けて検索　tagの値が同じだったら、タスク名が違っても検索結果に表示されるようになっている//
+//2 content,tag_id両方被っているで検索　タスク名が一致しているだけでは検索結果が表示されない//
+//3 content,tag_id両方被りまたは、content被り、tag_id被りで検索　　タグが一致しなくても全部返ってくる//
+
+
+//両方被ってる or　content被ってるけど、tag_idは空欄　or tag_idは被っていて、contenは空欄

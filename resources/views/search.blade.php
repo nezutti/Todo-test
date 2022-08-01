@@ -16,7 +16,7 @@
       @csrf
       <input type="text" name="content">
       <select name="tag_id">
-        <option value="" selected></option>
+        <option value="" selected disabled></option>
         @foreach($items2 as $item2)
         <option value="{{$item2->id}}">{{$item2->tagName}}</option>
         @endforeach
