@@ -32,6 +32,11 @@
  
   .Todo-head{
       background-color:white;
+      display:flex;
+  }
+
+  .login{
+     background-color:white;
   }
 
   ul{
@@ -70,6 +75,7 @@
   .form1{
     width:100%;
     background-color:white;
+    display:flex;
   }
 
   .text1{
@@ -126,10 +132,22 @@
    margin:0px 10px;
   }
 
-  .login{
+  .log{
      background-color:white;
+     display:flex;
   }
 
+  .login{
+    background-color:white;
+  }
+
+  .select{
+    background-color:white;
+  }
+
+  .selectTag{
+    background-color:white;
+  }
 
    
   
@@ -143,11 +161,17 @@
   <div class="Todolist">
     <div class="Todo-head">
       <h1>Todo List</h1>
-      @if(Auth::check())
-       <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
-      @endif
-      <a href="/logout">ログアウト</a>
-      <a href="/todo/find">タスク検索</a>
+      <div class="log">
+        @if(Auth::check())
+        <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
+        @else
+        <p>ログインしてください（<a href="/login">ログイン</a>
+        <a href="/register">登録</a>）</p>
+        @endif
+        <a href="/logout">ログアウト</a>
+      </div>
+    </div>
+    <a href="/todo/find">タスク検索</a>
 
      
       
@@ -164,10 +188,10 @@
        
         @csrf
         <input type="text" class="text1"  name="content">
-        <select name="tag_id">
+        <select name="tag_id" class="select">
           
           @foreach($items2 as $item2)
-          <option value="{{$item2->id}}">{{$item2->tagName}}</option>
+          <option value="{{$item2->id}}" class="selectTag">{{$item2->tagName}}</option>
           @endforeach
         </select>
         <input type="submit"  class="btn1" name="add" value="追加">
@@ -194,12 +218,12 @@
        
         </td>
         <td>
-          <select name="tag_id">
+          <select name="tag_id" class="select">
             @foreach($items2 as $item2)
               @if($item2->tagName==$item->tag->tagName)
-              <option value="{{$item2->id}}" selected>{{$item->tag->tagName}}</option>
+              <option value="{{$item2->id}}" class="selectTag" selected>{{$item->tag->tagName}}</option>
               @else
-              <option value="{{$item2->id}}" >{{$item2->tagName}}</option>
+              <option value="{{$item2->id}}" class="selectTag" >{{$item2->tagName}}</option>
               @endif
             @endforeach
            

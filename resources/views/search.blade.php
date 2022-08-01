@@ -15,10 +15,10 @@
     <form action="/todo/search" method="post">
       @csrf
       <input type="text" name="content">
-      <select name="tag_id">
-        <option value="" selected disabled></option>
+      <select name="tag_id" class="select">
+        <option value=""  class="selectTag" selected disabled></option>
         @foreach($items2 as $item2)
-        <option value="{{$item2->id}}">{{$item2->tagName}}</option>
+        <option value="{{$item2->id}}" class="selectTag">{{$item2->tagName}}</option>
         @endforeach
       </select>
       <input type="submit" value="検索">
@@ -46,14 +46,14 @@
        
           </td>
           <td>
-            <select name="tag_id">
+            <select name="tag_id" class="select">
 
            
               @foreach($items2 as $item2)
                 @if($item2->tagName==$item->tag->tagName)
-                <option value="{{$item2->id}}" selected>{{$item->tag->tagName}}</option>
+                <option value="{{$item2->id}}" class="selectTag"selected>{{$item->tag->tagName}}</option>
                 @else
-                <option value="{{$item2->id}}" >{{$item2->tagName}}</option>
+                <option value="{{$item2->id}}" class="selectTag" >{{$item2->tagName}}</option>
                 @endif
             
             
