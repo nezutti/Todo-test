@@ -12,17 +12,19 @@
        @endif
       <a href="/logout">ログアウト</a>
     </div>
-    <form action="/todo/find" method="post">
+    <form action="/todo/search" method="post">
       @csrf
       <input type="text" name="content">
       <select name="tag_id">
         <option value="" selected></option>
         @foreach($items2 as $item2)
-        <option value="{{$item2->id}}">{{$item2->id}}</option>
+        <option value="{{$item2->id}}">{{$item2->tagName}}</option>
         @endforeach
       </select>
-    </form>
+      <input type="submit" value="検索">
+    </form>  
     <div class="search-result">
+      @if(@isset($items))
       <table>
         <tr>
           <th>作成名</th>
@@ -80,6 +82,7 @@
         </tr>
         @endforeach
       </table> 
+      @endif
       <a href="/">戻る</a>
 
     </div>

@@ -66,9 +66,17 @@ class TodoController extends Controller
   }
 
 public function search(Request $request){
-    $search=$request->content;
-    $items=Todo::where('content','like',"%$search")->get();
-    $param=["items"=>$items];
+    $s_content=$request->input('content');
+    $s_tag_id=$request->input('tag_id');
+    $items2=Tag::all();
+    
+    if(!empty($s_content)){
+       $items=Todo::where('content','like',"%$s_content%")->get();
+    }
+    if(!empty($s_tag_id)){
+        $items=Todo::where('tag_id',$s_tag_id)->get();
+    }
+    $param=["items"=>$items,"items2"=>$items2];
     return view("search",$param);
 }
 

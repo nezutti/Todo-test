@@ -195,17 +195,17 @@
         </td>
         <td>
           <select name="tag_id">
-
-           
             @foreach($items2 as $item2)
               @if($item2->tagName==$item->tag->tagName)
               <option value="{{$item2->id}}" selected>{{$item->tag->tagName}}</option>
               @else
               <option value="{{$item2->id}}" >{{$item2->tagName}}</option>
               @endif
-            
-            
             @endforeach
+           
+          
+              
+            
             
           </select>
         <td>
