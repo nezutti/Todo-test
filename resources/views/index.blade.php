@@ -6,6 +6,8 @@
   *{
    
     background-color:#010066;
+     outline: 1px solid red !important;
+
     
     
   }
@@ -25,7 +27,8 @@
 
   .Todolist{
   
-    width:100%;
+    width:90%;
+    margin:0 auto;
      background-color:white;
     
   }
@@ -33,6 +36,7 @@
   .Todo-head{
       background-color:white;
       display:flex;
+      justify-content:space-between;
   }
 
   .login{
@@ -68,7 +72,7 @@
 
   h1{
     background-color:white;
-    padding-left:5%;
+    
    
   }
 
@@ -82,7 +86,7 @@
     width:80%;
     height:40px;
     background-color:white;
-   margin-left:3%;
+   
    border:1px solid grey;
    border-radius:5px;
   }
@@ -135,20 +139,66 @@
   .log{
      background-color:white;
      display:flex;
+     
   }
 
   .login{
     background-color:white;
   }
 
+  .logout{
+    background-color:white;
+    text-decoration:none;
+    border:3px solid red;
+    border-radius:5px;
+    height:20%;
+    margin-top:30px;
+    margin-left:20px;
+    padding:8px 5px;
+    font-size:12px;
+    width:80px;
+    text-align:center;
+     color:red;
+  }
+  
+
   .select{
     background-color:white;
+    margin-left:30px;
+    border:3px solid grey;
+    border-radius:5px;
+    width:60px;
+    
+  }
+
+  .select2{
+    background-color:white;
+    border:3px solid grey;
+    border-radius:5px;
   }
 
   .selectTag{
     background-color:white;
   }
 
+
+  
+
+  .task-find{
+    background-color:white;
+    text-decoration:none;
+    display:block;
+    border:3px solid green;
+    border-radius:5px;
+    width:10%;
+    
+    font-size:12px;
+    color:green;
+    padding:5px;
+    margin:20px 0px;
+
+
+  }
    
   
   
@@ -168,10 +218,10 @@
         <p>ログインしてください（<a href="/login">ログイン</a>
         <a href="/register">登録</a>）</p>
         @endif
-        <a href="/logout">ログアウト</a>
+        <a href="/logout" class="logout">ログアウト</a>
       </div>
     </div>
-    <a href="/todo/find">タスク検索</a>
+    <a href="/todo/find" class="task-find">タスク検索</a>
 
      
       
@@ -218,7 +268,7 @@
        
         </td>
         <td>
-          <select name="tag_id" class="select">
+          <select name="tag_id" class="select2">
             @foreach($items2 as $item2)
               @if($item2->tagName==$item->tag->tagName)
               <option value="{{$item2->id}}" class="selectTag" selected>{{$item->tag->tagName}}</option>
