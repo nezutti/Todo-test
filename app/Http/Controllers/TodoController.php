@@ -59,8 +59,8 @@ class TodoController extends Controller
   public function find(){
    
    $items2=Tag::all();
-   
-   $item=["items2"=>$items2];
+   $user=Auth::user();
+   $item=["user"=>$user,"items2"=>$items2];
    
    return view("search",$item);
   }
