@@ -6,7 +6,9 @@
   *{
    
     background-color:#010066;
-     outline: 1px solid red !important;
+      outline: 1px solid red !important;
+  
+   
 
     
     
@@ -138,12 +140,13 @@
 
   .log{
      background-color:white;
-     display:flex;
+     
      
   }
 
   .login{
     background-color:white;
+    
   }
 
   .logout{
@@ -159,6 +162,7 @@
     width:80px;
     text-align:center;
      color:red;
+     margin-left:0px;
   }
   
 
@@ -215,11 +219,12 @@
         @if(Auth::check())
         <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
         @else
-        <p>ログインしてください（<a href="/login">ログイン</a>
-        <a href="/register">登録</a>）</p>
+        <p>ログインしてください（<a href="/login" class="login">ログイン</a>
+        <a href="/register" class="login">登録</a>）</p>
         @endif
-        <a href="/logout" class="logout">ログアウト</a>
+        <a href="/logout" class="logout">ログアウト</logout>
       </div>
+      
     </div>
     <a href="/todo/find" class="task-find">タスク検索</a>
 
