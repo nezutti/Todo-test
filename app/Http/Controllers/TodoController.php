@@ -69,6 +69,7 @@ public function search(Request $request){
     $s_content=$request->content;
     $s_tag_id=$request->tag_id;
     $items2=Tag::all();
+    $user=Auth::user();
     
     if(!empty($s_content) && !empty($s_tag_id)){
         $items=Todo::where('content','like',"%$s_content%")->where('tag_id',$s_tag_id)->get();
@@ -82,7 +83,7 @@ public function search(Request $request){
   
     
    
-    $param=["items"=>$items,"items2"=>$items2];
+    $param=["items"=>$items,"items2"=>$items2,"user"=>$user];
     return view("search",$param);
 
 
