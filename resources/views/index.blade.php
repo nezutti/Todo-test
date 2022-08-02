@@ -36,6 +36,7 @@
   }
  
   .Todo-head{
+      width:100%;
       background-color:white;
       display:flex;
       justify-content:space-between;
@@ -140,6 +141,7 @@
 
   .log{
      background-color:white;
+     display:flex;
      
      
   }
@@ -147,6 +149,11 @@
   .login{
     background-color:white;
     
+  }
+
+  .tologin{
+    background-color:white;
+    padding-top:20px;
   }
 
   .logout{
@@ -179,6 +186,8 @@
     background-color:white;
     border:3px solid grey;
     border-radius:5px;
+    display:block;
+    margin:0 auto;
   }
 
   .selectTag{
@@ -198,7 +207,7 @@
     
     font-size:12px;
     color:green;
-    padding:5px;
+    padding:1%;
     margin:20px 0px;
 
 
@@ -219,10 +228,10 @@
         @if(Auth::check())
         <p class="login">{{"「".$user->name."」"."でログイン中"}}</p>
         @else
-        <p>ログインしてください（<a href="/login" class="login">ログイン</a>
+        <p class="tologin">ログインしてください（<a href="/login" class="login">ログイン</a>
         <a href="/register" class="login">登録</a>）</p>
         @endif
-        <a href="/logout" class="logout">ログアウト</logout>
+        <a href="/logout" class="logout">ログアウト</a>
       </div>
       
     </div>
