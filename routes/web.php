@@ -5,6 +5,7 @@ use App\Http\Controllers\TodoController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 */
 
 
-
-
 Route::get('/', [TodoController::class,"index"]);
 
 Route::post("/todo/create",[TodoController::class,"create"]);
@@ -26,14 +25,10 @@ Route::post("/todo/update",[TodoController::class,"update"]);
 Route::post("/todo/delete",[TodoController::class,"delete"]);
 Route::get("/todo/find",[TodoController::class,"find"]);
 Route::post("/todo/search",[TodoController::class,"search"]);
-          
- Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->middleware(['auth'])->name('logout');
-
 
 
 Route::get('/dashboard', function () {
-    return view('/dashboard');
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
