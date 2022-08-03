@@ -297,7 +297,7 @@
      
           <td>{{$item->created_at}}</td>
      
-          <form action="/todo/update" method="post" class="form2">
+          <form action="/todo/find/update" method="post" class="form2">
             @csrf
             <td>
               <input type="text"  class="text2" name="content"  value="{{$item->content}}">
@@ -326,7 +326,7 @@
         
           </form>
         
-          <form action="/todo/delete" method="post">
+          <form action="/todo/find/delete" method="post">
           @csrf
 
           <td>

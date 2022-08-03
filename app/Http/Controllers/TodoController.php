@@ -89,7 +89,26 @@ public function search(Request $request){
 
 }
 
+public function findUpdate(Request $request){
+    $this->validate($request, Todo::$rules); 
+     $findtodo=Todo::find($request->id);
+     $findtodo->content=$request->content;
+     $findtodo->tag_id=$request->tag_id;
+     $findtodo->save();
+
+     return redirect("/todo/find");
+
 }
+
+public function findDelete(Request $request){
+    $todo=Todo::find($request->id);
+      $todo->delete();
+      
+      return redirect("/todo/find");
+  }
+}
+
+
 //1 content、tag_idそれぞれ分けて検索　tagの値が同じだったら、タスク名が違っても検索結果に表示されるようになっている//
 //2 content,tag_id両方被っているで検索　タスク名が一致しているだけでは検索結果が表示されない//
 //3 content,tag_id両方被りまたは、content被り、tag_id被りで検索　　タグが一致しなくても全部返ってくる//
@@ -98,3 +117,5 @@ public function search(Request $request){
 //両方被ってる or　content被ってるけど、tag_idは空欄　or tag_idは被っていて、contenは空欄
 
 //正しい方法は、入力されているinputの種類によって,ifで処理条件を分けるだった
+
+//searchに$itemが入ってないから、リダイレクトすると検索内容が消えてしまう。
