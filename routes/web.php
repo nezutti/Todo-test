@@ -24,7 +24,7 @@ Route::post("/todo/create",[TodoController::class,"create"]);
 Route::post("/todo/update",[TodoController::class,"update"]);
 Route::post("/todo/delete",[TodoController::class,"delete"]);
 Route::get("/todo/find",[TodoController::class,"find"]);
-Route::post("/todo/search",[TodoController::class,"search"]);
+Route::get("/todo/search",[TodoController::class,"search"]);
 Route::post("/todo/find/update",[TodoController::class,"findUpdate"]);
 Route::post("/todo/find/delete",[TodoController::class,"findDelete"]);
 Route::get('/dashboard', function () {
@@ -32,3 +32,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+/*27行目、postをgetに変更*/

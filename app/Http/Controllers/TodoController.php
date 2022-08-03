@@ -96,15 +96,14 @@ public function findUpdate(Request $request){
      $findtodo->tag_id=$request->tag_id;
      $findtodo->save();
 
-     return redirect("/todo/find");
-
+     return back();
 }
 
 public function findDelete(Request $request){
     $todo=Todo::find($request->id);
       $todo->delete();
       
-      return redirect("/todo/find");
+      return back();
   }
 }
 
@@ -119,3 +118,5 @@ public function findDelete(Request $request){
 //正しい方法は、入力されているinputの種類によって,ifで処理条件を分けるだった
 
 //searchに$itemが入ってないから、リダイレクトすると検索内容が消えてしまう。
+
+//methodsをpostからgetに変える

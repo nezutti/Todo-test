@@ -250,6 +250,8 @@
 }
 
 /*marginでは余白の部分の色が背景色に変わることがあるのでpaddingを使って余白を作るor親要素にmargin:0pxを指定*/
+
+/* 275行目、postをgetに変更*/
 </style>
 <div class="search">
   <div class="search-content">
@@ -270,7 +272,7 @@
        </ul>
          
       @endif
-    <form action="/todo/search" method="post" class="form1">
+    <form action="/todo/search" method="get" class="form1">
       @csrf
       <input type="text" name="content" class="text1">
       <select name="tag_id" class="select">
