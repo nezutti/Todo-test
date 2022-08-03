@@ -2,8 +2,7 @@
   *{
    
     background-color:#010066;
-      outline: 1px solid red !important;
-  
+      
    
 
     
@@ -95,6 +94,8 @@
     width:100%;
     background-color:white;
     display:flex;
+    margin:0px;
+    padding-bottom:20px;
   }
 
   .text1{
@@ -115,6 +116,8 @@
     border-radius:5px;
     color:#c450a0;
   }
+
+
 
   table{
     width:100%;
@@ -160,12 +163,14 @@
 
   .login{
     background-color:white;
+    padding-top:15px;
+    margin-right:20px;
     
   }
 
   .tologin{
     background-color:white;
-    padding-top:20px;
+    padding-top:15px;
   }
 
   .logout{
@@ -174,7 +179,7 @@
     border:3px solid red;
     border-radius:5px;
     height:20%;
-    margin-top:30px;
+    margin-top:20px;
     margin-left:20px;
     padding:8px 5px;
     font-size:12px;
@@ -223,6 +228,28 @@
 
   }
    
+
+.return{
+  background-color:white;
+  margin:0px;
+}
+
+
+.return-link{
+  background-color:white;
+  display:block;
+  width:70px;
+  padding:10px 0px;
+  border:3px solid grey;
+  border-radius:5px;
+  text-decoration:none;
+  font-size:12px;
+  text-align:center;
+  color:grey;
+  
+}
+
+/*marginでは余白の部分の色が背景色に変わることがあるのでpaddingを使って余白を作るor親要素にmargin:0pxを指定*/
 </style>
 <div class="search">
   <div class="search-content">
@@ -235,6 +262,14 @@
         <a href="/logout" class="logout">ログアウト</a>
       </div>
     </div>
+     @if(count($errors)>0)
+       <ul>
+        @foreach($errors->all() as $error)
+         <li>{{$error}}</li>
+        @endforeach
+       </ul>
+         
+      @endif
     <form action="/todo/search" method="post" class="form1">
       @csrf
       <input type="text" name="content" class="text1">
@@ -262,14 +297,14 @@
      
           <td>{{$item->created_at}}</td>
      
-          <form action="/todo/update" method="post" >
-          @csrf
-          <td>
-            <input type="text"  class="text2" name="content"  value="{{$item->content}}">
+          <form action="/todo/update" method="post" class="form2">
+            @csrf
+            <td>
+              <input type="text"  class="text2" name="content"  value="{{$item->content}}">
        
-          </td>
-          <td>
-            <select name="tag_id" class="select">
+            </td>
+            <td>
+              <select name="tag_id" class="select">
 
            
               @foreach($items2 as $item2)
@@ -282,12 +317,12 @@
             
               @endforeach
             
-            </select>
-          </td>
-          <td>
+              </select>
+            </td>
+            <td>
             <input type="submit" class="btn2" value="更新">
             <input type="hidden" name="id" value="{{$item->id}}">
-          </td> 
+            </td> 
         
           </form>
         
@@ -306,7 +341,9 @@
         @endforeach
       </table> 
       @endif
-      <a href="/">戻る</a>
+      <div class="return">
+        <a href="/" class="return-link">戻る</a>
+      </div>
 
     </div>
   <div>

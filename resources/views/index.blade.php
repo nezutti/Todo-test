@@ -6,8 +6,7 @@
   *{
    
     background-color:#010066;
-      outline: 1px solid red !important;
-  
+    
    
 
     
@@ -148,6 +147,8 @@
 
   .login{
     background-color:white;
+    padding-top:20px;
+    margin-right:20px;
     
   }
 
@@ -201,17 +202,19 @@
     background-color:white;
     text-decoration:none;
     display:block;
-    border:3px solid green;
+    border:3px solid #B9C42F;
     border-radius:5px;
     width:10%;
     
     font-size:12px;
-    color:green;
+    color:#B9C42F;
     padding:1%;
     margin:20px 0px;
 
 
   }
+
+  
    
   
   
